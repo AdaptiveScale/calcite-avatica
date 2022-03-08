@@ -121,6 +121,7 @@ public abstract class AbstractCursor implements Cursor {
     case Types.DECIMAL:
       return new NumberAccessor(getter, columnMetaData.scale);
     case Types.CHAR:
+    case Types.NCHAR:
       switch (columnMetaData.type.rep) {
       case PRIMITIVE_CHAR:
       case CHARACTER:
@@ -129,9 +130,13 @@ public abstract class AbstractCursor implements Cursor {
         return new FixedStringAccessor(getter, columnMetaData.displaySize);
       }
     case Types.VARCHAR:
+    case Types.NVARCHAR:
+    case Types.LONGVARCHAR:
+    case Types.LONGNVARCHAR:
       return new StringAccessor(getter);
     case Types.BINARY:
     case Types.VARBINARY:
+    case Types.LONGVARBINARY:
       switch (columnMetaData.type.rep) {
       case STRING:
         return new BinaryFromStringAccessor(getter);
