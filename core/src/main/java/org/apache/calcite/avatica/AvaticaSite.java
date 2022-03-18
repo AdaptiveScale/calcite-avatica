@@ -309,6 +309,7 @@ public class AvaticaSite {
         return null;
       }
       return aLong;
+    case Types.BLOB:
     case Types.BINARY:
     case Types.LONGVARBINARY:
     case Types.VARBINARY:
@@ -320,8 +321,6 @@ public class AvaticaSite {
         return null;
       }
       return aBoolean;
-    case Types.BLOB:
-      return accessor.getBlob();
     case Types.DATE:
       return accessor.getDate(localCalendar);
     case Types.DECIMAL:
