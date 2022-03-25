@@ -120,14 +120,15 @@ public abstract class AbstractCursor implements Cursor {
       return new DoubleAccessor(getter);
     case Types.DECIMAL:
       return new NumberAccessor(getter, columnMetaData.scale);
+//    case Types.CHAR:
+//      switch (columnMetaData.type.rep) {
+//      case PRIMITIVE_CHAR:
+//      case CHARACTER:
+//        return new StringFromCharAccessor(getter, columnMetaData.displaySize);
+//      default:
+//        return new FixedStringAccessor(getter, columnMetaData.displaySize);
+//      }
     case Types.CHAR:
-      switch (columnMetaData.type.rep) {
-      case PRIMITIVE_CHAR:
-      case CHARACTER:
-        return new StringFromCharAccessor(getter, columnMetaData.displaySize);
-      default:
-        return new FixedStringAccessor(getter, columnMetaData.displaySize);
-      }
     case Types.VARCHAR:
     case Types.NVARCHAR:
     case Types.LONGVARCHAR:
